@@ -2,9 +2,8 @@ name: Run Specific Notebooks Every 5 Minutes
 
 on:
   schedule:
-    # Programación para ejecutar cada hora
+    # Programación para ejecutar cada 5 minutos
     - cron: "*/5 * * * *"
-
   workflow_dispatch: # Permite ejecución manual si es necesario
 
 jobs:
@@ -33,3 +32,9 @@ jobs:
         run: |
           papermill notebooks/PM40_PromedioMovil40_V3.ipynb notebooks/PM40_PromedioMovil40_V3_output.ipynb -k python3
 
+      # 5. Guarda el archivo de salida como artifact
+      - name: Upload output notebook
+        uses: actions/upload-artifact@v3
+        with:
+          name: PM40_output_notebook
+          path: notebooks/PM40_PromedioMovil40_V3_output.ipynb
