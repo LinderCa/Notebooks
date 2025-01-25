@@ -1,9 +1,9 @@
-name: Run Notebooks Every Hour
+name: Run Specific Notebooks Every 5 Minutes
 
 on:
   schedule:
     # Programación para ejecutar cada hora
-    - cron: "0 * * * *"
+    - cron: "*/5 * * * *"
 
   workflow_dispatch: # Permite ejecución manual si es necesario
 
@@ -28,6 +28,5 @@ jobs:
     - name: Run notebooks
       run: |
         pip install papermill
-        for notebook in notebooks/*.ipynb; do
-          papermill "$notebook" "${notebook%.ipynb}_output.ipynb"
-        done
+        papermill notebooks/PM40_PromedioMovil40_V3.ipynb notebooks/PM40_PromedioMovil40_V3_output.ipynb
+
