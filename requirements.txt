@@ -6,3 +6,5 @@ yahoofinancials==1.20
 yfinance==0.2.43
 numpy==1.23.5
 scipy
+statsmodels
+papermill
